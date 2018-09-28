@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Easing, StyleSheet, Animated, Image, Text, View, Dimensions } from 'react-native'
+import PropTypes from 'prop-types'
 import NMPlayers from './NMPlayers'
 
 const DEVICE_WIDTH  = Dimensions.get('window').width
@@ -7,6 +8,17 @@ const DEVICE_HEIGHT = Dimensions.get('window').height
 
 
 export default class NLPlayer extends Component {
+  static propTypes = {
+    data: PropTypes.shape({
+      challengers   : PropTypes.arrayOf(PropTypes.object),
+      challengeList : PropTypes.arrayOf(PropTypes.object)
+    })
+  }
+
+  static defaultProps = {
+    data: {}
+  }
+
   state = {
     animatedValue       : new Animated.Value(0),
     horizontalPosition  : new Animated.Value(0),
